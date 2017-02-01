@@ -95,6 +95,9 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Common\RelayCommand.cs" />
+    <Compile Include="Converter\DateTimeConveter.cs" />
+    <Compile Include="Handler\MyEventHandler.cs" />
     <Compile Include="Model\Event.cs" />
     <Compile Include="Model\EventCatalogSingleton.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -129,9 +132,6 @@
     </ApplicationDefinition>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Common\" />
-    <Folder Include="Converter\" />
-    <Folder Include="Handler\" />
     <Folder Include="Persistency\" />
   </ItemGroup>
   <ItemGroup>

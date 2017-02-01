@@ -5,6 +5,7 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:ViewModel="using:EventMaker.ViewModel"
+    xmlns:Interactivity="using:Microsoft.Xaml.Interactivity" xmlns:Core="using:Microsoft.Xaml.Interactions.Core"
     x:Class="EventMaker.View.CreateEventPage"
     mc:Ignorable="d">
 
@@ -18,6 +19,7 @@
         <TextBox x:Name="textBox3" HorizontalAlignment="Left" Margin="553,43,0,0" TextWrapping="Wrap" Text="{Binding Place, Mode=TwoWay}" VerticalAlignment="Top" Height="54" Width="140"/>
         <DatePicker HorizontalAlignment="Left" Margin="39,179,0,0" VerticalAlignment="Top" ToolTipService.ToolTip="{Binding DateTime}"/>
         <TimePicker HorizontalAlignment="Left" Margin="451,179,0,0" VerticalAlignment="Top" ClockIdentifier="24HourClock" ToolTipService.ToolTip="{Binding Time}"/>
+        <Button x:Name="button" Content="{Binding CreateEventCommand}" HorizontalAlignment="Left" Height="70" Margin="770,157,0,0" VerticalAlignment="Top" Width="114"/>
 
     </Grid>
 </Page>
