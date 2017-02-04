@@ -4,15 +4,20 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Input;
+using Windows.Devices.AllJoyn;
 using Windows.Media.Streaming.Adaptive;
+using Windows.UI.Xaml;
+using EventMaker.Common;
 using EventMaker.Persistency;
+using Newtonsoft.Json;
 
 namespace EventMaker.Model
 {
     class EventCatalogSingleton
     {
         public ObservableCollection<Event> Events { get; set; }
-        
+        private static EventCatalogSingleton instance;
         public EventCatalogSingleton()
         {
             Events.Add(new Event(1, "Event1", "Cykelløb", "Glostrup", new DateTime(2017, 2, 1)));
@@ -20,10 +25,43 @@ namespace EventMaker.Model
             Events.Add(new Event(3, "Event3", "Ironman", "København", new DateTime(2017, 2, 5)));
         }
 
-
-        public void AddEvent()
+        public static EventCatalogSingleton Instance
         {
-            //this.Add();
+            get
+            {
+                if (instance == null)
+                {
+                    instance = new EventCatalogSingleton();
+                }
+                return instance;
+            }
+        }
+
+        public string GetJson()
+        {
+            string json = JsonConvert.SerializeObject(this);
+            return json;
+        }
+
+        public void InsertJson(string jsonText)
+        {
+            List<Event> newList = JsonConvert.DeserializeObject<List<Event>>(jsonText);
+
+            foreach (var eventItem in newList)
+            {
+                Events.Add(eventItem);
+            }
+        }
+        
+
+        public void AddEvent(Event newEvent)
+        {
+            Events.Add(newEvent);
+        }
+
+        public void RemoveEvent(Event ev)
+        {
+            Events.Remove(ev);
         }
     }
 }

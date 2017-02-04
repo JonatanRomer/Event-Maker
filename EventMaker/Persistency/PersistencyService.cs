@@ -17,7 +17,7 @@ namespace EventMaker.Persistency
 
         public static async Task<List<Model.Event>> LoadEventsFromJsonAsync()
         {
-            
+            return null;
         }
 
         public static async void SerializeEventsFileAsync(string eventsSting, string filename)
@@ -27,7 +27,7 @@ namespace EventMaker.Persistency
 
         public static async Task<string> DeSerializeEventsFileAsync(string filename)
         {
-            
+            return null;
         }
     }
 }

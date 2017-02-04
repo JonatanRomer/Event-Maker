@@ -21,5 +21,10 @@ namespace EventMaker.Handler
         {
             Event NewEvent = new Event(ViewModel.Id, ViewModel.Name, ViewModel.Description, ViewModel.Place, DateTimeConveter.DateTimeOffsetAndTimeSetToDateTime(ViewModel.Date, ViewModel.Time));
         }
+
+        public void DeleteEvent(Event ev)
+        {
+            EventCatalogSingleton.Instance.RemoveEvent(ev);
+        }
     }
 }
