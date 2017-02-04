@@ -24,6 +24,13 @@
                 </DataTemplate>
             </ListView.ItemTemplate>-->
         </ListView>
+        <Button x:Name="button" Content="Create Event" HorizontalAlignment="Left" Margin="298,257,0,0" VerticalAlignment="Top" Height="66" Width="172">
+            <Interactivity:Interaction.Behaviors>
+                <Core:EventTriggerBehavior EventName="Click">
+                    <Core:NavigateToPageAction TargetPage="EventMaker.View.CreateEventPage"/>
+                </Core:EventTriggerBehavior>
+            </Interactivity:Interaction.Behaviors>
+        </Button>
 
     </Grid>
 </Page>

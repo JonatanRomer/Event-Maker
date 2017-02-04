@@ -20,6 +20,13 @@
         <DatePicker HorizontalAlignment="Left" Margin="39,179,0,0" VerticalAlignment="Top" ToolTipService.ToolTip="{Binding DateTime}"/>
         <TimePicker HorizontalAlignment="Left" Margin="451,179,0,0" VerticalAlignment="Top" ClockIdentifier="24HourClock" ToolTipService.ToolTip="{Binding Time}"/>
         <Button x:Name="button" Content="{Binding CreateEventCommand}" HorizontalAlignment="Left" Height="70" Margin="770,157,0,0" VerticalAlignment="Top" Width="114"/>
+        <Button x:Name="button1" Content="Tilbage" HorizontalAlignment="Left" Margin="160,403,0,0" VerticalAlignment="Top">
+            <Interactivity:Interaction.Behaviors>
+                <Core:EventTriggerBehavior EventName="Click">
+                    <Core:NavigateToPageAction TargetPage="EventMaker.View.EventPage"/>
+                </Core:EventTriggerBehavior>
+            </Interactivity:Interaction.Behaviors>
+        </Button>
 
     </Grid>
 </Page>

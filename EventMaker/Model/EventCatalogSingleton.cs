@@ -5,12 +5,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Windows.Media.Streaming.Adaptive;
+using EventMaker.Persistency;
 
 namespace EventMaker.Model
 {
     class EventCatalogSingleton
     {
         public ObservableCollection<Event> Events { get; set; }
+        
         public EventCatalogSingleton()
         {
             Events.Add(new Event(1, "Event1", "Cykelløb", "Glostrup", new DateTime(2017, 2, 1)));
