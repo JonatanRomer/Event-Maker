@@ -18,7 +18,6 @@ namespace EventMaker.Persistency
         }
 
         const String fileName = "savedFile.json";
-        //private static readonly IStorageFile localFile;
 
         public static async void SaveEventsAsJsonAsync(ObservableCollection<Model.Event> events)
         {
