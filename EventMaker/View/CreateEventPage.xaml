@@ -17,9 +17,9 @@
         <TextBox x:Name="textBox1" HorizontalAlignment="Left" Margin="211,43,0,0" TextWrapping="Wrap" Text="{Binding Name, Mode=TwoWay}" VerticalAlignment="Top" Height="54" Width="102"/>
         <TextBox x:Name="textBox2" HorizontalAlignment="Left" Margin="360,43,0,0" TextWrapping="Wrap" Text="{Binding Description, Mode=TwoWay}" VerticalAlignment="Top" Height="54" Width="140"/>
         <TextBox x:Name="textBox3" HorizontalAlignment="Left" Margin="553,43,0,0" TextWrapping="Wrap" Text="{Binding Place, Mode=TwoWay}" VerticalAlignment="Top" Height="54" Width="140"/>
-        <DatePicker HorizontalAlignment="Left" Margin="39,179,0,0" VerticalAlignment="Top" ToolTipService.ToolTip="{Binding DateTime}"/>
-        <TimePicker HorizontalAlignment="Left" Margin="451,179,0,0" VerticalAlignment="Top" ClockIdentifier="24HourClock" ToolTipService.ToolTip="{Binding Time}"/>
-        <Button x:Name="button" Content="{Binding CreateEventCommand}" HorizontalAlignment="Left" Height="70" Margin="770,157,0,0" VerticalAlignment="Top" Width="114"/>
+        <DatePicker HorizontalAlignment="Left" Margin="39,179,0,0" VerticalAlignment="Top" Date="{Binding Date}"/>
+        <TimePicker HorizontalAlignment="Left" Margin="451,179,0,0" VerticalAlignment="Top" ClockIdentifier="24HourClock" Time="{Binding Time}"/>
+        <Button x:Name="button" HorizontalAlignment="Left" Height="70" Margin="770,157,0,0" VerticalAlignment="Top" Width="114" Command="{Binding CreateEventCommand}" Content="Add Event"/>
         <Button x:Name="button1" Content="Tilbage" HorizontalAlignment="Left" Margin="160,403,0,0" VerticalAlignment="Top">
             <Interactivity:Interaction.Behaviors>
                 <Core:EventTriggerBehavior EventName="Click">

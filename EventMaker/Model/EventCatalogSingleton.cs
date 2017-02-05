@@ -7,6 +7,8 @@ using System.Threading.Tasks;
 using System.Windows.Input;
 using Windows.Devices.AllJoyn;
 using Windows.Media.Streaming.Adaptive;
+using Windows.ApplicationModel.Activation;
+using Windows.UI.Popups;
 using Windows.UI.Xaml;
 using EventMaker.Common;
 using EventMaker.Persistency;
@@ -20,6 +22,7 @@ namespace EventMaker.Model
         private static EventCatalogSingleton instance;
         public EventCatalogSingleton()
         {
+            Events = new ObservableCollection<Event>();
             Events.Add(new Event(1, "Event1", "Cykelløb", "Glostrup", new DateTime(2017, 2, 1)));
             Events.Add(new Event(2, "Event2", "Party-Hardy", "Århus", new DateTime(2017, 2, 2)));
             Events.Add(new Event(3, "Event3", "Ironman", "København", new DateTime(2017, 2, 5)));
@@ -52,6 +55,8 @@ namespace EventMaker.Model
                 Events.Add(eventItem);
             }
         }
+
+        public Persistency.PersistencyService pservice { get; set; }
         
 
         public void AddEvent(Event newEvent)

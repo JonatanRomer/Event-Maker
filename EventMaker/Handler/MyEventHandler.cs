@@ -11,21 +11,22 @@ namespace EventMaker.Handler
 {
     class MyEventHandler
     {
-        public EventViewModel evm { get; set; }
+        public EventViewModel VievModel { get; set; }
 
-        public MyEventHandler(EventViewModel Evm)
+        public MyEventHandler(EventViewModel Event)
         {
-            this.evm = Evm;
+            this.VievModel = Event;
         }
         public void CreateEvent()
         {
-            Event NewEvent = new Event(evm.Id, evm.Name, evm.Description, evm.Place, DateTimeConveter.DateTimeOffsetAndTimeSetToDateTime(evm.Date, evm.Time));
+            Event NewEvent = new Event(VievModel.Id, VievModel.Name, VievModel.Description, VievModel.Place, DateTimeConveter.DateTimeOffsetAndTimeSetToDateTime(VievModel.Date, VievModel.Time));
+            Model.EventCatalogSingleton.Instance.AddEvent(NewEvent);
         }
 
-        public void DeleteEvent(Event ev)
+        public void DeleteEvent()
         {
-            //Model.EventCatalogSingleton.Instance.RemoveEvent(evm.);
-            //EventCatalogSingleton.Instance.RemoveEvent(ev);
+            Model.EventCatalogSingleton.Instance.RemoveEvent(VievModel.SelectedEvent);
+            
         }
     }
 }

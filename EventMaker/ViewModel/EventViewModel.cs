@@ -1,12 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
 using System.Linq.Expressions;
+using System.Reflection.Metadata;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using Windows.UI.Notifications;
+using Windows.UI.Text;
 using EventMaker.Common;
 using EventMaker.Handler;
 using EventMaker.Model;
@@ -28,14 +32,15 @@ namespace EventMaker.ViewModel
         public MyEventHandler eh { get; set; }
         public ICommand DeleteEventCommand { get; set; }
         private Event selectedEvent;
-
+        
         public event PropertyChangedEventHandler PropertyChanged;
 
-        protected virtual void OnProbertyChanged([CallerMemberName] string propertyName = null)
+        protected virtual void OnProbertyChanged(string propertyName)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         } 
 
+        public ObservableCollection<Event> EventObser { get; set; }
         public Event SelectedEvent
         {
             get { return selectedEvent; }
@@ -47,6 +52,16 @@ namespace EventMaker.ViewModel
             
         }
 
+        /*public RelayCommand(Action methodToExecute, Func<bool> methodToDetctCanExecute)
+        {
+            
+        }
+
+        public bool CanExecute(object parameter)
+        {
+            return methodToDetectCanExecute == null ? true : methodToDetectCanExecute();
+        }*/
+
 
         
 
@@ -57,10 +72,24 @@ namespace EventMaker.ViewModel
             Time = new TimeSpan(dt.Hour, dt.Minute, dt.Second);
             eh = new MyEventHandler(this);
             CreateEventCommand = new Common.RelayCommand(eh.CreateEvent);
-            //DeleteEventCommand = new Common.RelayCommand(eh.DeleteEvent());
+            DeleteEventCommand = new Common.RelayCommand(eh.DeleteEvent, tomListe);
+            //SelectedEvent = new Event();
+            EventObser = new ObservableCollection<Event>();
+            EventObser = EventCatalogSingleton.Instance.Events;
         }
 
-        
+        public bool tomListe()
+        {
+            if (Model.EventCatalogSingleton.Instance.Events.Count() > 0)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+
+        }
         
 
     }

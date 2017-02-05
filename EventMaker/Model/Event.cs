@@ -25,18 +25,10 @@ namespace EventMaker.Model
             this.DateTime = DateTime;
         }
 
-        /*public Event(int id, string name, string description, string place, DateTimeOffset date)
-        {
-            Id = id;
-            Name = name;
-            Description = description;
-            Place = place;
-            this.date = date;
-        }*/
 
         public override string ToString()
         {
-            return base.ToString();
+            return $"{Name}";
         }
     }
     
