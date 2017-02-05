@@ -57,11 +57,13 @@ namespace EventMaker.Model
         public void AddEvent(Event newEvent)
         {
             Events.Add(newEvent);
+            Persistency.PersistencyService.SaveEventsAsJsonAsync(Events);
         }
 
         public void RemoveEvent(Event ev)
         {
             Events.Remove(ev);
+            Persistency.PersistencyService.SaveEventsAsJsonAsync(Events);
         }
     }
 }

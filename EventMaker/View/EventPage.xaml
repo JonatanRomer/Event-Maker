@@ -14,7 +14,7 @@
         <Grid.DataContext>
             <ViewModel:EventViewModel/>
         </Grid.DataContext>
-        <ListView x:Name="listView" HorizontalAlignment="Left" Height="278" Margin="72,45,0,0" VerticalAlignment="Top" Width="181" ItemsSource="{Binding Events}">
+        <ListView x:Name="listView" HorizontalAlignment="Left" Height="278" Margin="72,45,0,0" VerticalAlignment="Top" Width="181" ItemsSource="{Binding Events}" SelectedItem="{Binding SelectedEvent}">
             <!--<ListView.ItemTemplate>
                 <DataTemplate>
                     <Border Name="Border" BorderBrush="Blue" BorderThickness="1" Padding="7" Margin="3">
@@ -27,10 +27,11 @@
         <Button x:Name="button" Content="Create Event" HorizontalAlignment="Left" Margin="298,257,0,0" VerticalAlignment="Top" Height="66" Width="172">
             <Interactivity:Interaction.Behaviors>
                 <Core:EventTriggerBehavior EventName="Click">
-                    <Core:NavigateToPageAction TargetPage="EventMaker.View.CreateEventPage"/>
                 </Core:EventTriggerBehavior>
             </Interactivity:Interaction.Behaviors>
         </Button>
+        <TextBlock x:Name="textBlock" HorizontalAlignment="Left" Margin="572,257,0,0" TextWrapping="Wrap" Text="{Binding SelectedEvent}" VerticalAlignment="Top" Height="66" Width="122"/>
+        <AppBarButton x:Name="appBarButton" HorizontalAlignment="Left" Icon="Accept" Label="{Binding DeleteEventCommand}" Margin="790,257,0,0" VerticalAlignment="Top" Height="70" Width="139"/>
 
     </Grid>
 </Page>

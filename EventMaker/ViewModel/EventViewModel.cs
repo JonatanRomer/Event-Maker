@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Linq.Expressions;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
@@ -12,7 +14,7 @@ using EventMaker.View;
 
 namespace EventMaker.ViewModel
 {
-    class EventViewModel
+    class EventViewModel : INotifyPropertyChanged
     {
         public EventCatalogSingleton singleton { get; set; }
 
@@ -24,6 +26,29 @@ namespace EventMaker.ViewModel
         public TimeSpan Time { get; set; }
         public ICommand CreateEventCommand { get; set; }
         public MyEventHandler eh { get; set; }
+        public ICommand DeleteEventCommand { get; set; }
+        private Event selectedEvent;
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        protected virtual void OnProbertyChanged([CallerMemberName] string propertyName = null)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        } 
+
+        public Event SelectedEvent
+        {
+            get { return selectedEvent; }
+            set
+            {
+                selectedEvent = value;
+                OnProbertyChanged(nameof(SelectedEvent));
+            } 
+            
+        }
+
+
+        
 
         public EventViewModel()
         {
@@ -32,6 +57,7 @@ namespace EventMaker.ViewModel
             Time = new TimeSpan(dt.Hour, dt.Minute, dt.Second);
             eh = new MyEventHandler(this);
             CreateEventCommand = new Common.RelayCommand(eh.CreateEvent);
+            //DeleteEventCommand = new Common.RelayCommand(eh.DeleteEvent());
         }
 
         
