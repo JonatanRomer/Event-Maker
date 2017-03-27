@@ -10,6 +10,7 @@ namespace EventWS
         public EventContext()
             : base("name=EventContext")
         {
+            base.Configuration.ProxyCreationEnabled = false;
         }
 
         public virtual DbSet<EventTable> EventTable { get; set; }
