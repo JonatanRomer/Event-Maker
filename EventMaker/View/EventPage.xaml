@@ -32,7 +32,7 @@
             </Interactivity:Interaction.Behaviors>
         </Button>
         <TextBlock x:Name="textBlock" HorizontalAlignment="Left" Margin="501,184,0,0" TextWrapping="Wrap" Text="{Binding SelectedEvent}" VerticalAlignment="Top" Height="139" Width="248"/>
-        <Button x:Name="button1" HorizontalAlignment="Left" Margin="797,257,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.57,0.63" Height="64" Width="132" Command="{Binding DeleteEventCommand}"/>
+        <Button x:Name="button1" HorizontalAlignment="Left" Margin="797,257,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.57,0.63" Height="64" Width="132" Command="{Binding DeleteEventCommand}" Content="Delete"/>
 
     </Grid>
 </Page>
